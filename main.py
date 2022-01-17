@@ -8,11 +8,9 @@ from ViewBooks import *
 from SearchBook import *
 from IssueBook import *
 
-# Add your own database name and password here to reflect in the code
 mypass = "2001"
 mydatabase="library"
 
-# Enter Table Names here
 empTable = "Employee" #Employee Table
 stuTable = "Student" #Student Table
 
@@ -71,7 +69,7 @@ def empMenu():
     backBtn = Button(root,text="<  BACK",bg='#455A64', fg='white', command=Employee)
     backBtn.place(relx=0.5,rely=0.9, relwidth=0.18,relheight=0.08)
     
-def stuMenu():
+def stuMenu(lid):
     
     global headingFrame1,headingFrame2,headingLabel,SubmitBtn,Canvas1,btn1,btn2,btn3,btn4,btn5,backBtn
     headingFrame1.destroy()
@@ -99,7 +97,10 @@ def stuMenu():
     
     btn2 = Button(root,text="Search Book",bg='black', fg='white',command=searchBook)
     btn2.place(relx=0.28,rely=0.45, relwidth=0.45,relheight=0.1)
-    
+
+    btn3 = Button(root,text="View Borrowed Books",bg='black', fg='white', command = lambda:viewBorrowed(lid))
+    btn3.place(relx=0.28,rely=0.55, relwidth=0.45,relheight=0.1)
+
     backBtn = Button(root,text="<  BACK",bg='#455A64', fg='white', command=Student)
     backBtn.place(relx=0.5,rely=0.9, relwidth=0.18,relheight=0.08)
 
@@ -236,7 +237,7 @@ def gettingLoginDetails():
                 getName = i[0]
             
             if(getLoginID == login and getName == name):
-                stuMenu()
+                stuMenu(login)
                 messagebox.showinfo("SUCCESS","You have successfully logged in")
             else:
                 messagebox.showerror("Failure","Can't log in, check your credentials")
@@ -270,54 +271,46 @@ def EmpRegister():
     labelFrame = Frame(root,bg='#044F67')
     labelFrame.place(relx=0.2,rely=0.44,relwidth=0.6,relheight=0.42)
     
-    # Employee ID
     lb1 = Label(labelFrame,text="Emp ID : ", bg='#044F67', fg='white')
     lb1.place(relx=0.05,rely=0.05)
     
     en1 = Entry(labelFrame)
     en1.place(relx=0.3,rely=0.05, relwidth=0.62)
     
-    #Employee Name
     lb2 = Label(labelFrame,text="Name : ", bg='#044F67', fg='white')
     lb2.place(relx=0.05,rely=0.2)
     
     en2 = Entry(labelFrame)
     en2.place(relx=0.3,rely=0.2, relwidth=0.62)
     
-    #Employee Paswword
     lb3 = Label(labelFrame,text="Password : ", bg='#044F67', fg='white')
     lb3.place(relx=0.05,rely=0.35)
     
     en3 = Entry(labelFrame)
     en3.place(relx=0.3,rely=0.35, relwidth=0.62)
     
-    #Employee Department
     lb4 = Label(labelFrame,text="Department : ", bg='#044F67', fg='white')
     lb4.place(relx=0.05,rely=0.5)
     
     en4 = Entry(labelFrame)
     en4.place(relx=0.3,rely=0.5, relwidth=0.62)
     
-    #Employee Date of Joining
     lb5 = Label(labelFrame,text="DOJ : ", bg='#044F67', fg='white')
     lb5.place(relx=0.05,rely=0.65)
     
     en5 = Entry(labelFrame)
     en5.place(relx=0.3,rely=0.65, relwidth=0.62)
     
-    # Employee Salary
     lb5 = Label(labelFrame,text="Salary : ", bg='#044F67', fg='white')
     lb5.place(relx=0.05,rely=0.8)
     
     en6 = Entry(labelFrame)
     en6.place(relx=0.3,rely=0.8, relwidth=0.62)
     
-    #Submit Button
     SubmitBtn = Button(root,text="SUBMIT",bg='#264348', fg='white',command=gettingEmpDetails)
     SubmitBtn.place(relx=0.28,rely=0.9, relwidth=0.18,relheight=0.08)
 
 
-# Login both for Employee and Student
 def Login():
     
     global labelFrame
@@ -333,39 +326,33 @@ def Login():
     labelFrame = Frame(root,bg='#044F67')
     labelFrame.place(relx=0.2,rely=0.44,relwidth=0.6,relheight=0.3)
     
-    # Login ID
     lb1 = Label(labelFrame,text="Login ID : ", bg='#044F67', fg='white')
     lb1.place(relx=0.05,rely=0.1)
     
     en1 = Entry(labelFrame)
     en1.place(relx=0.3,rely=0.1, relwidth=0.62)
     
-    # Name
     lb2 = Label(labelFrame,text="Name : ", bg='#044F67', fg='white')
     lb2.place(relx=0.05,rely=0.3)
     
     en2 = Entry(labelFrame)
     en2.place(relx=0.3,rely=0.3, relwidth=0.62)
     
-    # Paswword
     lb3 = Label(labelFrame,text="Password : ", bg='#044F67', fg='white')
     lb3.place(relx=0.05,rely=0.5)
     
     en3 = Entry(labelFrame)
     en3.place(relx=0.3,rely=0.5, relwidth=0.62)
     
-    # Role
     lb4 = Label(labelFrame,text="Role : ", bg='#044F67', fg='white')
     lb4.place(relx=0.05,rely=0.7)
     
     en4 = Entry(labelFrame)
     en4.place(relx=0.3,rely=0.7, relwidth=0.62)
     
-    #Submit Button
     SubmitBtn = Button(root,text="SUBMIT",bg='#264348', fg='white',command=gettingLoginDetails)
     SubmitBtn.place(relx=0.28,rely=0.9, relwidth=0.18,relheight=0.08)
 
-# Student Registration
 def studentRegister():
     
     global labelFrame
@@ -381,49 +368,42 @@ def studentRegister():
     labelFrame = Frame(root,bg='#044F67')
     labelFrame.place(relx=0.2,rely=0.44,relwidth=0.6,relheight=0.42)
     
-    # Student Roll no
     lb1 = Label(labelFrame,text="Roll No : ", bg='#044F67', fg='white')
     lb1.place(relx=0.05,rely=0.05)
     
     en1 = Entry(labelFrame)
     en1.place(relx=0.3,rely=0.05, relwidth=0.62)
     
-    # Sudent Name
     lb2 = Label(labelFrame,text="Name : ", bg='#044F67', fg='white')
     lb2.place(relx=0.05,rely=0.2)
     
     en2 = Entry(labelFrame)
     en2.place(relx=0.3,rely=0.2, relwidth=0.62)
     
-    # Student Password
     lb3 = Label(labelFrame,text="Password : ", bg='#044F67', fg='white')
     lb3.place(relx=0.05,rely=0.35)
     
     en3 = Entry(labelFrame)
     en3.place(relx=0.3,rely=0.35, relwidth=0.62)
     
-    # Student Department
     lb4 = Label(labelFrame,text="Dept : ", bg='#044F67', fg='white')
     lb4.place(relx=0.05,rely=0.5)
     
     en4 = Entry(labelFrame)
     en4.place(relx=0.3,rely=0.5, relwidth=0.62)
     
-    # Student Semester
     lb5 = Label(labelFrame,text="Semester : ", bg='#044F67', fg='white')
     lb5.place(relx=0.05,rely=0.65)
     
     en5 = Entry(labelFrame)
     en5.place(relx=0.3,rely=0.65, relwidth=0.62)
     
-    # Student Batch
     lb6 = Label(labelFrame,text="Batch : ", bg='#044F67', fg='white')
     lb6.place(relx=0.05,rely=0.8)
     
     en6 = Entry(labelFrame)
     en6.place(relx=0.3,rely=0.8, relwidth=0.62)
     
-    #Submit Button
     SubmitBtn = Button(root,text="SUBMIT",bg='#264348', fg='white',command=gettingStuDetails)
     SubmitBtn.place(relx=0.28,rely=0.9, relwidth=0.18,relheight=0.08)
     
@@ -501,7 +481,6 @@ def Student():
 same=True
 n=0.3
 
-# Adding a background image
 background_image =Image.open("library.jpg")
 [imageSizeWidth, imageSizeHeight] = background_image.size
 

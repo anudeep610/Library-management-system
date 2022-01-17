@@ -3,14 +3,12 @@ from PIL import ImageTk,Image
 from tkinter import messagebox
 import pymysql
 
-# Add your own database name and password here to reflect in the code
 mypass = "2001"
 mydatabase="library"
 
 con = pymysql.connect(host="localhost",user="root",password=mypass,database=mydatabase)
 cur = con.cursor()
 
-# Enter Table Names here
 bookTable = "Book" #Book Table
     
 
@@ -64,7 +62,6 @@ def searchBook():
     same=True
     n=0.3
     
-    # Adding a background image
     background_image =Image.open("library.jpg")
     [imageSizeWidth, imageSizeHeight] = background_image.size
     
@@ -92,14 +89,13 @@ def searchBook():
     headingLabel = Label(headingFrame2, text="SEARCH BOOK", fg='black')
     headingLabel.place(relx=0.25,rely=0.15, relwidth=0.5, relheight=0.5)   
         
-    # Book ID to Delete
+
     lb1 = Label(labelFrame,text="Enter Subject : ", bg='black', fg='white')
     lb1.place(relx=0.05,rely=0.5)
         
     en1 = Entry(labelFrame)
     en1.place(relx=0.3,rely=0.5, relwidth=0.62)
     
-    #Submit Button
     SearchBtn = Button(root,text="Search",bg='#264348', fg='white',command=search)
     SearchBtn.place(relx=0.28,rely=0.75, relwidth=0.18,relheight=0.08)
     

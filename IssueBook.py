@@ -1,25 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun  7 19:44:24 2019
-
-J.A.R.V.I.S Says Hello
-
-@author: Sayan
-"""
-
 from tkinter import *
 from PIL import ImageTk,Image
 from tkinter import messagebox
 import pymysql
 
-# Add your own database name and password here to reflect in the code
 mypass = "2001"
 mydatabase="library"
 
 con = pymysql.connect(host="localhost",user="root",password=mypass,database=mydatabase)
 cur = con.cursor()
 
-# Enter Table Names here
 issueTable = "Issue" #Issue Table
 bookTable = "Book" #Book Table
 stuTable = "Student" #Student Table
@@ -111,10 +100,13 @@ def issue():
     updateStatus = "update "+bookTable+" set status = 'issued' where bid = '"+bid+"'"
     try:
         if bid in allBid and issueto in allRoll and issueby in allEmpId and status == True:
-            cur.execute(issueSql)
-            con.commit()
-            cur.execute(updateStatus)
-            con.commit()
+            try:
+                cur.execute(issueSql)
+                con.commit()
+                cur.execute(updateStatus)
+                con.commit()
+            except:
+                messagebox.showinfo("Error","Limit Reached")
         else:
             allBid.clear()
             allEmpId.clear()
@@ -155,7 +147,6 @@ def issueBook():
     same=True
     n=0.3
     
-    # Adding a background image
     background_image =Image.open("library.jpg")
     [imageSizeWidth, imageSizeHeight] = background_image.size
     
@@ -183,28 +174,24 @@ def issueBook():
     headingLabel = Label(headingFrame2, text="ISSUE BOOK", fg='black')
     headingLabel.place(relx=0.25,rely=0.15, relwidth=0.5, relheight=0.5)   
         
-    # Book ID
     lb1 = Label(labelFrame,text="Book ID : ", bg='black', fg='white')
     lb1.place(relx=0.05,rely=0.2)
         
     en1 = Entry(labelFrame)
     en1.place(relx=0.3,rely=0.2, relwidth=0.62)
     
-    # Issued To Roll Number 
     lb2 = Label(labelFrame,text="Issued To(rollno) : ", bg='black', fg='white')
     lb2.place(relx=0.05,rely=0.4)
         
     en2 = Entry(labelFrame)
     en2.place(relx=0.3,rely=0.4, relwidth=0.62)
     
-    # Issued By Employee Number
     lb3 = Label(labelFrame,text="Issued By(empid) : ", bg='black', fg='white')
     lb3.place(relx=0.05,rely=0.6)
         
     en3 = Entry(labelFrame)
     en3.place(relx=0.3,rely=0.6, relwidth=0.62)
     
-    #Issue Button
     issueBtn = Button(root,text="Issue",bg='#d1ccc0', fg='black',command=issue)
     issueBtn.place(relx=0.28,rely=0.75, relwidth=0.18,relheight=0.08)
     
