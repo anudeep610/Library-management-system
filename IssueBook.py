@@ -9,14 +9,14 @@ mydatabase="library"
 con = pymysql.connect(host="localhost",user="root",password=mypass,database=mydatabase)
 cur = con.cursor()
 
-issueTable = "Issue" #Issue Table
-bookTable = "Book" #Book Table
-stuTable = "Student" #Student Table
-empTable = "Employee" #Employee Table
+issueTable = "Issue"
+bookTable = "Book"
+stuTable = "Student"
+empTable = "Employee"
     
-allRoll = [] #List To store all Roll Numbers
-allEmpId = [] #List To store all Employee IDs
-allBid = [] #List To store all Book IDs
+allRoll = []
+allEmpId = []
+allBid = []
 
 def issue():
     

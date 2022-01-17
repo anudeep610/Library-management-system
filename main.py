@@ -11,8 +11,8 @@ from IssueBook import *
 mypass = "2001"
 mydatabase="library"
 
-empTable = "Employee" #Employee Table
-stuTable = "Student" #Student Table
+empTable = "Employee"
+stuTable = "Student"
 
 root = Tk()
 root.title("Library")
@@ -24,10 +24,6 @@ empFrameCount = 0
 con = pymysql.connect(host="localhost",user="root",password=mypass,database=mydatabase)
 cur = con.cursor()
 
-
-'''
-This are the menus after logging in
-'''
 def empMenu():
     
     global headingFrame1,headingFrame2,headingLabel,SubmitBtn,Canvas1,labelFrame,backBtn
@@ -407,7 +403,6 @@ def studentRegister():
     SubmitBtn = Button(root,text="SUBMIT",bg='#264348', fg='white',command=gettingStuDetails)
     SubmitBtn.place(relx=0.28,rely=0.9, relwidth=0.18,relheight=0.08)
     
-# Employee Home Page 
 def Employee():
     
     global headingFrame1,headingFrame2,headingLabel,btn1,btn2,Canvas1
@@ -442,7 +437,6 @@ def Employee():
     btn3 = Button(root,text="Quit",bg='#455A64', fg='white', command=root.quit)
     btn3.place(relx=0.53,rely=0.9, relwidth=0.18,relheight=0.08)
 
-# Student Home Page   
 def Student():
     
     global headingFrame1,headingFrame2,headingLabel,btn1,btn2,Canvas1
@@ -477,7 +471,7 @@ def Student():
     btn3 = Button(root,text="Quit",bg='#455A64', fg='white', command=root.quit)
     btn3.place(relx=0.53,rely=0.9, relwidth=0.18,relheight=0.08)
 
-# Take n greater than 0.25 and less than 5
+
 same=True
 n=0.3
 

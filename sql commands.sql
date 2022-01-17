@@ -70,15 +70,15 @@ INSERT INTO Student VALUES('4','Nani','qwerty','ise','6','a2');
 INSERT INTO Student VALUES('5','Vikrant','qwerty','chem','4','c1');
 
 
-INSERT INTO Book VALUES('12432','Mechanical Engineering','Mechanical','Gwen Stacy','Aval');
-INSERT INTO Book VALUES('13142','Python Zero to Hero','python','Mary Jane','Aval');
-INSERT INTO Book VALUES('43543','Introduction to Programming','compuer science','Harry Osborn','Aval');
-INSERT INTO Book VALUES('65356','Chemical Bonds','Chemistry','Ben Parker','Aval');
-INSERT INTO Book VALUES('34632','Data Structures and algorithms','Java','Haward Starck','Aval');
-INSERT INTO Book VALUES('34331','Computer Organisation','CSE','Albert','Aval');
-INSERT INTO Book VALUES('34135','DBMS','CSE','Lucy Mayor','Aval');
-INSERT INTO Book VALUES('41234','Software Engineering','CSE','Hetmayer','Aval');
-INSERT INTO Book VALUES('41224','Data Communications','CSE','Vinay Reddy','Aval');
+INSERT INTO Book VALUES('12432','Mechanical Engineering','Mechanical','Gwen Stacy','avail');
+INSERT INTO Book VALUES('13142','Python Zero to Hero','python','Mary Jane','avail');
+INSERT INTO Book VALUES('43543','Introduction to Programming','compuer science','Harry Osborn','avail');
+INSERT INTO Book VALUES('65356','Chemical Bonds','Chemistry','Ben Parker','avail');
+INSERT INTO Book VALUES('34632','Data Structures and algorithms','Java','Haward Starck','avail');
+INSERT INTO Book VALUES('34331','Computer Organisation','CSE','Albert','avail');
+INSERT INTO Book VALUES('34135','DBMS','CSE','Lucy Mayor','avail');
+INSERT INTO Book VALUES('41234','Software Engineering','CSE','Hetmayer','avail');
+INSERT INTO Book VALUES('41224','Data Communications','CSE','Vinay Reddy','avail');
 
 
 INSERT INTO Issue VALUES('12432','3','1');

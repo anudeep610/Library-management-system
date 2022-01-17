@@ -49,7 +49,7 @@ def addBooks():
     con = pymysql.connect(host="localhost",user="root",password=mypass,database=mydatabase)
     cur = con.cursor()
 
-    bookTable = "Book" # Book Table
+    bookTable = "Book"
 
     same=True
     n=0.3

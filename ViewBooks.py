@@ -10,7 +10,7 @@ con = pymysql.connect(host="localhost",user="root",password=mypass,database=myda
 cur = con.cursor()
 
 
-bookTable = "Book" #Book Table
+bookTable = "Book"
     
 def View(): 
     
