@@ -409,7 +409,7 @@ def studentRegister():
     en4 = Entry(labelFrame)
     en4.place(relx=0.3,rely=0.5, relwidth=0.62)
     
-     # Student Semester
+    # Student Semester
     lb5 = Label(labelFrame,text="Semester : ", bg='#044F67', fg='white')
     lb5.place(relx=0.05,rely=0.65)
     
@@ -517,7 +517,7 @@ img = ImageTk.PhotoImage(background_image)
 Canvas1 = Canvas(root)
 
 Canvas1.create_image(300,340,image = img)      
-Canvas1.config(bg="white",width = newImageSizeWidth, height = newImageSizeHeight)
+Canvas1.config(bg="#172341",width = newImageSizeWidth, height = newImageSizeHeight)
 Canvas1.pack(expand=True,fill=BOTH)
 
 headingFrame1 = Frame(root,bg="#333945",bd=5)
@@ -526,7 +526,7 @@ headingFrame1.place(relx=0.2,rely=0.1,relwidth=0.6,relheight=0.16)
 headingFrame2 = Frame(headingFrame1,bg="#EAF0F1")
 headingFrame2.place(relx=0.01,rely=0.05,relwidth=0.98,relheight=0.9)
 
-headingLabel = Label(headingFrame2, text="Welcome to RCPL Library", fg='black')
+headingLabel = Label(headingFrame2, text="Welcome to ABV Library", fg='black')
 headingLabel.place(relx=0.25,rely=0.1, relwidth=0.5, relheight=0.5)
 
 btn1 = Button(root,text="Employee",bg='black', fg='white', command=Employee)
