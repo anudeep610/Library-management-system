@@ -17,7 +17,7 @@ def View():
     root = Tk()
     root.title("Library")
     root.minsize(width=400,height=400)
-    root.geometry("600x500")
+    root.geometry("600x600")
 
 
     same=True
@@ -39,7 +39,7 @@ def View():
     Canvas1.pack(expand=True,fill=BOTH)
         
     labelFrame = Frame(root,bg='black')
-    labelFrame.place(relx=0.1,rely=0.3,relwidth=0.8,relheight=0.5)
+    labelFrame.place(relx=0.1,rely=0.3,relwidth=0.8,relheight=0.65)
         
     headingFrame1 = Frame(root,bg="#333945",bd=5)
     headingFrame1.place(relx=0.25,rely=0.1,relwidth=0.5,relheight=0.13)
@@ -52,8 +52,8 @@ def View():
     
     y = 0.25
     
-    Label(labelFrame, text="%-10s%-30s%-20s%-30s%-20s"%('BID','Title','Subject','Author','Status'),bg='black',fg='white').place(relx=0.07,rely=0.1)
-    Label(labelFrame, text="----------------------------------------------------------------------------",bg='black',fg='white').place(relx=0.05,rely=0.2)
+    Label(labelFrame, text="%-10s%-40s%-20s%-30s%-20s"%('BID','Title','Subject','Author','Status'),bg='black',fg='white').place(relx=0.07,rely=0.1)
+    Label(labelFrame, text="-------------------------------------------------------------------------------------------",bg='black',fg='white').place(relx=0.05,rely=0.2)
     getBooks = "select * from "+bookTable
     try:
         cur.execute(getBooks)

@@ -53,6 +53,7 @@ def issue():
                 status = True
             else:
                 status = False
+                messagebox.showinfo("Error","Book already issued")
         else:
             messagebox.showinfo("Error","Book ID not present")
     except:

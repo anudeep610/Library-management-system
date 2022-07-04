@@ -1,3 +1,4 @@
+from operator import imod
 from tkinter import *
 from PIL import ImageTk,Image
 import pymysql
@@ -7,6 +8,7 @@ from DeleteBook import *
 from ViewBooks import *
 from SearchBook import *
 from IssueBook import *
+from returnBook import *
 
 mypass = "2001"
 mydatabase="library"
@@ -97,13 +99,13 @@ def stuMenu(lid):
     btn3 = Button(root,text="View Borrowed Books",bg='black', fg='white', command = lambda:viewBorrowed(lid))
     btn3.place(relx=0.28,rely=0.55, relwidth=0.45,relheight=0.1)
 
+    btn4 = Button(root,text="Return Book",bg='black', fg='white', command = lambda:returnBook(lid))
+    btn4.place(relx=0.28,rely=0.65, relwidth=0.45,relheight=0.1)
+
     backBtn = Button(root,text="<  BACK",bg='#455A64', fg='white', command=Student)
     backBtn.place(relx=0.5,rely=0.9, relwidth=0.18,relheight=0.08)
 
 
-'''
-This Section handles the database
-'''
 def gettingEmpDetails():
     
     EmpId = en1.get()
@@ -193,12 +195,12 @@ def gettingStuDetails():
     en5.delete(0, END)
     en6.delete(0, END)
     
-def gettingLoginDetails():
+def gettingLoginDetails(value):
     
     login = en1.get()
     name = en2.get()
     password = en3.get()
-    role = en4.get()
+    role = value
     role.lower()
     
     if (role == 'emp'):
@@ -250,7 +252,6 @@ def gettingLoginDetails():
     en1.delete(0, END)
     en2.delete(0, END)
     en3.delete(0, END)
-    en4.delete(0, END)
     
 def EmpRegister():
     
@@ -307,7 +308,7 @@ def EmpRegister():
     SubmitBtn.place(relx=0.28,rely=0.9, relwidth=0.18,relheight=0.08)
 
 
-def Login():
+def Login(value):
     
     global labelFrame
     
@@ -340,13 +341,9 @@ def Login():
     en3 = Entry(labelFrame)
     en3.place(relx=0.3,rely=0.5, relwidth=0.62)
     
-    lb4 = Label(labelFrame,text="Role : ", bg='#044F67', fg='white')
-    lb4.place(relx=0.05,rely=0.7)
+    en4=value
     
-    en4 = Entry(labelFrame)
-    en4.place(relx=0.3,rely=0.7, relwidth=0.62)
-    
-    SubmitBtn = Button(root,text="SUBMIT",bg='#264348', fg='white',command=gettingLoginDetails)
+    SubmitBtn = Button(root,text="SUBMIT",bg='#264348', fg='white',command=lambda:gettingLoginDetails(en4))
     SubmitBtn.place(relx=0.28,rely=0.9, relwidth=0.18,relheight=0.08)
 
 def studentRegister():
@@ -431,7 +428,7 @@ def Employee():
     btn1 = Button(root,text="Register",bg='black', fg='white',command=EmpRegister)
     btn1.place(relx=0.28,rely=0.3, relwidth=0.2,relheight=0.1)
     
-    btn2 = Button(root,text="Login",bg='black', fg='white', command=Login)
+    btn2 = Button(root,text="Login",bg='black', fg='white', command=lambda:Login("emp"))
     btn2.place(relx=0.53,rely=0.3, relwidth=0.2,relheight=0.1)
     
     btn3 = Button(root,text="Quit",bg='#455A64', fg='white', command=root.quit)
@@ -465,7 +462,7 @@ def Student():
     btn1 = Button(root,text="Register",bg='black', fg='white', command=studentRegister)
     btn1.place(relx=0.28,rely=0.3, relwidth=0.2,relheight=0.1)
     
-    btn2 = Button(root,text="Login",bg='black', fg='white', command=Login)
+    btn2 = Button(root,text="Login",bg='black', fg='white', command=lambda:Login("stu"))
     btn2.place(relx=0.53,rely=0.3, relwidth=0.2,relheight=0.1)
     
     btn3 = Button(root,text="Quit",bg='#455A64', fg='white', command=root.quit)
@@ -499,7 +496,7 @@ headingFrame1.place(relx=0.2,rely=0.1,relwidth=0.6,relheight=0.16)
 headingFrame2 = Frame(headingFrame1,bg="#EAF0F1")
 headingFrame2.place(relx=0.01,rely=0.05,relwidth=0.98,relheight=0.9)
 
-headingLabel = Label(headingFrame2, text="Welcome to ABV Library", fg='black')
+headingLabel = Label(headingFrame2, text="Welcome to WM Library", fg='black')
 headingLabel.place(relx=0.25,rely=0.1, relwidth=0.5, relheight=0.5)
 
 btn1 = Button(root,text="Employee",bg='black', fg='white', command=Employee)

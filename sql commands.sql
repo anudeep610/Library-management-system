@@ -30,9 +30,13 @@ create table Book (
 ); 
 
 create table Issue (
-    bid varchar(20) primary key,
+    bid varchar(20),
     issueto varchar(30),
-    issueby varchar(30)
+    issueby varchar(30),
+    primary key(bid,issueto,issueby),
+    foreign key(bid) references Book(bid),
+    foreign key(issueto) references Student(rollno),
+    foreign key(issueby) references Employee(empid)
 );
 
 --Trigger: Student can only borrow maximum of 3 books
@@ -84,11 +88,10 @@ INSERT INTO Book VALUES('41224','Data Communications','CSE','Vinay Reddy','avail
 INSERT INTO Issue VALUES('12432','3','1');
 INSERT INTO Issue VALUES('43543','2','5');
 INSERT INTO Issue VALUES('13142','1','4');
-INSERT INTO Issue VALUES('65356','5','2');
+INSERT INTO Issue VALUES('65356','1','2');
 INSERT INTO Issue VALUES('34632','4','3');
 INSERT INTO Issue VALUES('34331','1','3');
-INSERT INTO Issue VALUES('34135','1','2');
-INSERT INTO Issue VALUES('41224','1','1');
+INSERT INTO Issue VALUES('12432','1','3');
 
 
 --Procedure: To find number of books when id is given
@@ -103,7 +106,24 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL get_all_borrowed_books(3);
+CALL get_all_borrowed_books(1);
+
+--Procedure : to return the book on basis on roll_no and bid
+
+DELIMITER $$
+CREATE PROCEDURE return_book(IN roll_no INT, IN bid INT)
+BEGIN
+    DELETE FROM Issue i
+    WHERE i.issueto=roll_no AND i.bid=bid;
+
+    UPDATE Book b 
+    SET b.status="avail"
+    WHERE b.bid=bid;
+
+END
+DELIMITER ;
+
+CALL return_book(3,12432);
 
 select DISTINCT(s.name) 
 from student s, employee e, issue i
