@@ -496,7 +496,7 @@ headingFrame1.place(relx=0.2,rely=0.1,relwidth=0.6,relheight=0.16)
 headingFrame2 = Frame(headingFrame1,bg="#EAF0F1")
 headingFrame2.place(relx=0.01,rely=0.05,relwidth=0.98,relheight=0.9)
 
-headingLabel = Label(headingFrame2, text="Welcome to WM Library", fg='black')
+headingLabel = Label(headingFrame2, text="Welcome to ABV Library", fg='black')
 headingLabel.place(relx=0.25,rely=0.1, relwidth=0.5, relheight=0.5)
 
 btn1 = Button(root,text="Employee",bg='black', fg='white', command=Employee)
